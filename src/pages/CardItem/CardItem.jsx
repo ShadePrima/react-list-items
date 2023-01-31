@@ -49,7 +49,7 @@ const CardItem = () => {
           <img src={product.images[0]} alt='' />
         </div>
         <div className={styles.description}>
-          <h1>Майка</h1>
+          <h1>{items.name}</h1>
           <div className={styles.colorChange}>
             <h1>Цвет</h1>
             <button onClick={() => changeColor(0)} className={styles.ColorBtn}>
@@ -62,8 +62,8 @@ const CardItem = () => {
               {colors[2].name}
             </button>
           </div>
-          <h1>Цена</h1>
-          <h1>Описание</h1>
+          <h1>Цена: {product.price}</h1>
+          <h1>Описание: {product.description}</h1>
           <h1>Размеры</h1>
         </div>
       </div>
