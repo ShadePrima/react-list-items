@@ -1,0 +1,51 @@
+@import '../../styles/variable';
+
+.colors {
+  display: flex;
+  gap: 20px;
+  margin: 20px;
+}
+
+.sizes {
+  display: flex;
+  gap: 20px;
+}
+.card {
+  display: flex;
+}
+
+.image {
+  // padding: 10px;
+  // border-radius: 20px;
+  // width: 200px;
+  // height: 300px;
+  // margin: 20px 80px 20px 20px;
+  // background-color: $color-purple;
+
+  img {
+    width: 70%;
+    height: 280px;
+    margin: 40px;
+    border-radius: 10px;
+  }
+}
+
+.description {
+  margin: 20px;
+}
+
+.colorChange {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ColorBtn {
+  width: 70px;
+  padding: 0 10px;
+  margin: 10px;
+  background-color: $color-green;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px gray;
+  color: $color-dark;
+}
