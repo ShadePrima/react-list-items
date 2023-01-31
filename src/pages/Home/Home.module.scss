@@ -1,0 +1,15 @@
+@import '../../styles/variable';
+
+.root {
+}
+
+.title {
+  padding: 10px 20px;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.listItems {
+  display: flex;
+  gap: 20px;
+}
