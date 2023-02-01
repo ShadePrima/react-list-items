@@ -39,32 +39,43 @@ const CardItem = () => {
   }
 
   return (
-    <div className={styles.root}>
-      <Link to='/'>
-        <button className='button'>Back</button>
-      </Link>
+    <div className='container'>
+      <div className={styles.root}>
+        <Link to='/'>
+          <button className='button'>Back</button>
+        </Link>
 
-      <div className={styles.card}>
-        <div className={styles.image}>
-          <img src={product.images[0]} alt='' />
-        </div>
-        <div className={styles.description}>
-          <h1>{items.name}</h1>
-          <div className={styles.colorChange}>
-            <h1>Цвет</h1>
-            <button onClick={() => changeColor(0)} className={styles.ColorBtn}>
-              {colors[0].name}
-            </button>
-            <button onClick={() => changeColor(1)} className={styles.ColorBtn}>
-              {colors[1].name}
-            </button>
-            <button onClick={() => changeColor(2)} className={styles.ColorBtn}>
-              {colors[2].name}
-            </button>
+        <div className={styles.card}>
+          <div className={styles.image}>
+            <img src={product.images[0]} alt='' />
           </div>
-          <h1>Цена: {product.price}</h1>
-          <h1>Описание: {product.description}</h1>
-          <h1>Размеры</h1>
+          <div className={styles.description}>
+            <h1 className={styles.title}>{items.name}</h1>
+            <div className={styles.colorChange}>
+              <h1>Цвет</h1>
+              <button
+                onClick={() => changeColor(0)}
+                className={styles.ColorBtn}
+              >
+                {colors[0].name}
+              </button>
+              <button
+                onClick={() => changeColor(1)}
+                className={styles.ColorBtn}
+              >
+                {colors[1].name}
+              </button>
+              <button
+                onClick={() => changeColor(2)}
+                className={styles.ColorBtn}
+              >
+                {colors[2].name}
+              </button>
+            </div>
+            <h1>Цена: {product.price}</h1>
+            <h1>Описание: {product.description}</h1>
+            <h1>Размеры</h1>
+          </div>
         </div>
       </div>
     </div>

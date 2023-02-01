@@ -21,16 +21,9 @@
 }
 
 .image {
-  // padding: 10px;
-  // border-radius: 20px;
-  // width: 200px;
-  // height: 300px;
-  // margin: 20px 80px 20px 20px;
-  // background-color: $color-purple;
-
   img {
     width: 70%;
-    height: 280px;
+    height: 480px;
     margin: 40px;
     border-radius: 10px;
   }
@@ -38,6 +31,16 @@
 
 .description {
   margin: 20px;
+  padding-top: 10px;
+  font-size: 22px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-size: 36px;
 }
 
 .colorChange {
@@ -47,11 +50,46 @@
 }
 
 .ColorBtn {
-  width: 70px;
+  width: 90px;
   padding: 0 10px;
   margin: 10px;
   background-color: $color-green;
   border-radius: 5px;
   box-shadow: 3px 3px 5px gray;
   color: $color-dark;
+}
+
+@media (max-width: 425px) {
+  .root {
+    width: 243px;
+  }
+  // .card {
+  //   width: 243px;
+  //   height: 328px;
+  // }
+  .image {
+    // width: 243px;
+    // height: 328px;
+    img {
+      width: 100%;
+      height: 300px;
+      margin: 10px;
+    }
+  }
+
+  .description {
+    width: 320px;
+    height: 328px;
+    margin: 10px;
+    padding-top: 10px;
+    font-size: 16px;
+
+    gap: 10px;
+  }
+
+  .colorChange {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
 }

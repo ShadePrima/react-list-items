@@ -12,4 +12,12 @@
 .listItems {
   display: flex;
   gap: 20px;
+  flex-direction: column;
+}
+
+@media (max-width: 425px) {
+  .listItems {
+    flex-direction: column;
+    margin: 20px;
+  }
 }
