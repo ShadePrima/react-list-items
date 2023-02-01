@@ -1,24 +1,21 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import Items from '../../components/Item/Items';
 import { getProduct, getSizes } from '../../services/api';
 import { firstColors, firstProduct, firstSizes } from '../../services/items';
 import styles from './CardItem.module.scss';
 
 const CardItem = () => {
   const { id } = useParams();
+
   const [items, setItems] = React.useState([]);
   const [colors, setColors] = React.useState(firstColors);
   const [product, setProduct] = React.useState(firstProduct);
   const [changeImg, setChangeImg] = React.useState(0);
   const [sizes, setSizes] = React.useState(firstSizes);
   const [size, setSize] = React.useState({ id: 1, label: 'XS', number: 44 });
-  console.log(sizes, 'sizes');
-  // console.log(size, 'size');
+  const isLoading = React.useRef(true);
 
-  // console.log(product, 'product');
-
-  console.log(colors, 'colors');
+  const productSize = product.sizes;
 
   React.useEffect(() => {
     if (items.colors) {
@@ -30,6 +27,7 @@ const CardItem = () => {
     getProduct(Number(id)).then((res) => {
       setItems(res);
       setProduct(res.colors[0]);
+      isLoading.current = false;
     });
   }, [id]);
 
@@ -54,8 +52,25 @@ const CardItem = () => {
     currentSize.map((obj) => setSize(obj, 'changeSize'));
   };
 
-  if (!product) {
-    return 'Loading ...';
+  const sizesBtn = sizes.map((obj, index) => (
+    <button
+      disabled={productSize[index] !== obj.id}
+      key={obj.id}
+      onClick={() => changeSize(obj.id)}
+      className={
+        productSize[index] === obj.id
+          ? size.id === obj.id
+            ? styles.ColorBtnActive
+            : styles.ColorBtn
+          : styles.disable
+      }
+    >
+      {obj.label}
+    </button>
+  ));
+
+  if (isLoading.current) {
+    return <h1 className={styles.loading}>Loading ...</h1>;
   }
 
   return (
@@ -74,6 +89,7 @@ const CardItem = () => {
             <h1 className={styles.title}>{items.name}</h1>
             <div className={styles.colorChange}>
               <h1>Цвет</h1>
+              {}
               {colors.map((color, index) => (
                 <button
                   key={color.id}
@@ -95,17 +111,7 @@ const CardItem = () => {
                 Размер: {size.label} ({size.number})
               </h1>
 
-              {sizes.map((obj) => (
-                <button
-                  key={obj.id}
-                  onClick={() => changeSize(obj.id)}
-                  className={
-                    size.id === obj.id ? styles.ColorBtnActive : styles.ColorBtn
-                  }
-                >
-                  {obj.label}
-                </button>
-              ))}
+              {sizesBtn}
             </div>
           </div>
         </div>

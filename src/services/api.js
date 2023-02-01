@@ -56,7 +56,7 @@ export const products = [
         images: ['/images/2/blue_front.png', '/images/2/blue_back.png'],
         price: '89.00',
         description: 'Описание для "Майка синий"',
-        sizes: [2],
+        sizes: [1, 2],
       },
       {
         id: 3,

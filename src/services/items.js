@@ -59,7 +59,7 @@ export const firstColors = [
 export const firstProduct = {
   id: 1,
   name: 'черный',
-  images: ['/images/1/black_front.png', '/images/1/black_back.png'],
+  images: [],
   price: '123.00',
   description: 'Описание для "Футболка черный"',
   sizes: [1, 2, 3],

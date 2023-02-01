@@ -1,5 +1,9 @@
 @import '../../styles/variable';
 
+.loading {
+  font-size: 32px;
+  padding: 40px;
+}
 .colors {
   display: flex;
   gap: 20px;
@@ -79,6 +83,17 @@
   border-radius: 5px;
   box-shadow: 3px 3px 5px gray;
   color: $color-dark;
+}
+
+.disable {
+  width: 90px;
+  padding: 0 10px;
+  margin: 10px;
+  background-color: gray;
+  border-radius: 5px;
+  color: white;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 @media (max-width: 425px) {
