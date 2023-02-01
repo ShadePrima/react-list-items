@@ -10,9 +10,8 @@ const CardItem = () => {
   const [items, setItems] = React.useState([]);
   const [colors, setColors] = React.useState(firstColors);
   const [product, setProduct] = React.useState(firstProduct);
-  // console.log(product, 'product');
-  console.log(colors, 'colors');
-  // console.log(item, 'items');
+  const [changeImg, setChangeImg] = React.useState(0);
+  console.log(changeImg, 'img');
 
   React.useEffect(() => {
     if (items.colors) {
@@ -32,7 +31,14 @@ const CardItem = () => {
     console.log(colors[id], 'changeColr');
     setProduct(colors[id]);
   };
-  // console.log(items.filter());
+
+  const handleChangeImg = () => {
+    if (changeImg === 0) {
+      setChangeImg(1);
+    } else {
+      setChangeImg(0);
+    }
+  };
 
   if (!product) {
     return 'Loading ...';
@@ -47,7 +53,8 @@ const CardItem = () => {
 
         <div className={styles.card}>
           <div className={styles.image}>
-            <img src={product.images[0]} alt='' />
+            <img src={product.images[changeImg]} alt='' />
+            <button onClick={handleChangeImg}>Другой ракурс</button>
           </div>
           <div className={styles.description}>
             <h1 className={styles.title}>{items.name}</h1>
