@@ -64,3 +64,11 @@ export const firstProduct = {
   description: 'Описание для "Футболка черный"',
   sizes: [1, 2, 3],
 };
+
+export const firstSizes = [
+  { id: 1, label: 'XS', number: 44 },
+  { id: 2, label: 'S', number: 46 },
+  { id: 3, label: 'M', number: 48 },
+  { id: 4, label: 'L', number: 50 },
+  { id: 5, label: 'XL', number: 52 },
+];

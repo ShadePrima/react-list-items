@@ -71,6 +71,16 @@
   color: $color-dark;
 }
 
+.ColorBtnActive {
+  width: 90px;
+  padding: 0 10px;
+  margin: 10px;
+  background-color: $color-pink;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px gray;
+  color: $color-dark;
+}
+
 @media (max-width: 425px) {
   .root {
     width: 243px;

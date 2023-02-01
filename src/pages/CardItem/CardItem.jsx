@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Items from '../../components/Item/Items';
-import { getProduct } from '../../services/api';
-import { firstColors, firstProduct } from '../../services/items';
+import { getProduct, getSizes } from '../../services/api';
+import { firstColors, firstProduct, firstSizes } from '../../services/items';
 import styles from './CardItem.module.scss';
 
 const CardItem = () => {
@@ -11,7 +11,14 @@ const CardItem = () => {
   const [colors, setColors] = React.useState(firstColors);
   const [product, setProduct] = React.useState(firstProduct);
   const [changeImg, setChangeImg] = React.useState(0);
-  console.log(changeImg, 'img');
+  const [sizes, setSizes] = React.useState(firstSizes);
+  const [size, setSize] = React.useState({ id: 1, label: 'XS', number: 44 });
+  console.log(sizes, 'sizes');
+  // console.log(size, 'size');
+
+  // console.log(product, 'product');
+
+  console.log(colors, 'colors');
 
   React.useEffect(() => {
     if (items.colors) {
@@ -23,12 +30,10 @@ const CardItem = () => {
     getProduct(Number(id)).then((res) => {
       setItems(res);
       setProduct(res.colors[0]);
-      console.log(res.colors[0], 'res');
     });
   }, [id]);
 
   const changeColor = (id) => {
-    console.log(colors[id], 'changeColr');
     setProduct(colors[id]);
   };
 
@@ -38,6 +43,15 @@ const CardItem = () => {
     } else {
       setChangeImg(0);
     }
+  };
+
+  React.useEffect(() => {
+    getSizes().then((res) => setSizes(res));
+  }, []);
+
+  const changeSize = (id) => {
+    const currentSize = sizes.slice().filter((obj) => obj.id === id);
+    currentSize.map((obj) => setSize(obj, 'changeSize'));
   };
 
   if (!product) {
@@ -60,28 +74,39 @@ const CardItem = () => {
             <h1 className={styles.title}>{items.name}</h1>
             <div className={styles.colorChange}>
               <h1>Цвет</h1>
-              <button
-                onClick={() => changeColor(0)}
-                className={styles.ColorBtn}
-              >
-                {colors[0].name}
-              </button>
-              <button
-                onClick={() => changeColor(1)}
-                className={styles.ColorBtn}
-              >
-                {colors[1].name}
-              </button>
-              <button
-                onClick={() => changeColor(2)}
-                className={styles.ColorBtn}
-              >
-                {colors[2].name}
-              </button>
+              {colors.map((color, index) => (
+                <button
+                  key={color.id}
+                  onClick={() => changeColor(index)}
+                  className={
+                    product.id === color.id
+                      ? styles.ColorBtnActive
+                      : styles.ColorBtn
+                  }
+                >
+                  {color.name}
+                </button>
+              ))}
             </div>
             <h1>Цена: {product.price}</h1>
             <h1>Описание: {product.description}</h1>
-            <h1>Размеры</h1>
+            <div className={styles.sizeChange}>
+              <h1>
+                Размер: {size.label} ({size.number})
+              </h1>
+
+              {sizes.map((obj) => (
+                <button
+                  key={obj.id}
+                  onClick={() => changeSize(obj.id)}
+                  className={
+                    size.id === obj.id ? styles.ColorBtnActive : styles.ColorBtn
+                  }
+                >
+                  {obj.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
